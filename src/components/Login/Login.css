@@ -1,0 +1,32 @@
+.login-form-logo{
+  width: 202px;
+  height: 60px;
+  margin: 30px 0;
+}
+
+.form-container{
+  width: 570px;
+  height: 457px;
+  background: #FFFFFF;
+  border: 1px solid #ABABAB;
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.signin-button-container{
+  position: relative;
+  width: 457px;
+  height: 51px;
+  background: #FFFFFF;
+  border: 1px solid #C7C7C7;
+  box-sizing: border-box;
+  border-radius: 57px;
+}
+
+.google-logo{
+  position: absolute;
+  left: 0;
+  width: 31px;
+  height: 32px;
+  margin-left: 5px;
+}

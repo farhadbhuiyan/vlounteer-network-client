@@ -1,0 +1,8 @@
+.registration-form-container{
+  width: 570px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #ABABAB;
+  box-sizing: border-box;
+  border-radius: 4px;
+}

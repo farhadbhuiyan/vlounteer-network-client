@@ -1,0 +1,11 @@
+.header-container{
+  height: 496px;
+  background-image:linear-gradient(
+                  rgba(255, 255, 255, 0.9), 
+                  rgba(255, 255, 255, 0.9)
+                ),
+                 url('../../../images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-bottom: -150px;
+}
