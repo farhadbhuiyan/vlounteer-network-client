@@ -2,6 +2,7 @@ import React from 'react';
 import './Sidebar.css';
 import users from '../../../images/logos/users.png';
 import add from '../../../images/logos/add.png';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -14,7 +15,9 @@ const Sidebar = () => {
           </li>
           <li>
             <img src={add} alt="" />
-            <a href="#">Add event</a>
+            <Link to='/add-event'>
+              <a href="#">Add event</a>
+            </Link>
           </li>
         </ul>
       </div>

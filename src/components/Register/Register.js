@@ -10,19 +10,36 @@ const Register = (props) => {
 
   const history = useHistory();
 
-  const [info, setInfo] = useState({});
-  const [file, setFile] = useState(null);
+  const [info, setInfo] = useState({
+    fullName: '',
+    email: '',
+    date: '',
+    description: '',
+    title: ''
+  });
+  console.log(info);
 
-  const handleBlur = (e) => {
+
+  const handleChange = (event) => {
     const newInfo = { ...info };
-    newInfo[e.target.name] = e.target.value;
-    setInfo(newInfo);
+    if (event.target.name === 'fullName') {
+      newInfo.fullName = event.target.value;
+    }
+    else if (event.target.name === 'email') {
+      newInfo.email = event.target.value;
+    }
+    else if (event.target.name === 'date') {
+      newInfo.date = event.target.value;
+    }
+    else if (event.target.name === 'description') {
+      newInfo.description = event.target.value;
+    }
+    else if (event.target.name === 'title') {
+      newInfo.title = event.target.value;
+    }
+    setInfo(newInfo)
   }
 
-  const handleFileChange = (e) => {
-    const newFile = e.target.files[0];
-    setFile(newFile);
-  }
 
   const handleSubmit = (e) => {
     const formData = new FormData();
@@ -32,13 +49,13 @@ const Register = (props) => {
     formData.append('description', info.description);
     formData.append('title', info.title);
 
-    fetch('http://localhost:5000/register', {
+    fetch('http://localhost:5000/addRegistration', {
       method: 'POST',
       body: formData
     })
       .then(res => res.json())
       .then(data => {
-        history.replace('/dashboard');
+        history.replace('/registered-event');
         alert("Registration Complited succesfully..!!")
       });
     e.preventDefault();
@@ -50,23 +67,23 @@ const Register = (props) => {
       </div>
       <div className="registration-form-container">
         <h2>Register as a Volunteer</h2>
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control" name="fullName" placeholder="Full Name" value={loggedInUser.name} />
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <input onChange={handleChange} type="text" className="form-control" name="fullName" placeholder="Full Name" value={loggedInUser.name} />
           </div>
-          <div class="form-group">
-            <input type="email" class="form-control" name="email" placeholder="Username or Email" value={loggedInUser.email} />
+          <div className="form-group">
+            <input onSubmit={handleChange} type="email" className="form-control" name="email" placeholder="Username or Email" value={loggedInUser.email} />
           </div>
-          <div class="form-group">
-            <input type="date" class="form-control" name="date" placeholder="Date" />
+          <div className="form-group">
+            <input onSubmit={handleChange} type="date" className="form-control" name="date" placeholder="Date" />
           </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="description" placeholder="Desicription" />
+          <div className="form-group">
+            <input onSubmit={handleChange} type="text" className="form-control" name="description" placeholder="Desicription" />
           </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="title" placeholder="Organize books at the library." />
+          <div className="form-group">
+            <input onSubmit={handleChange} type="text" className="form-control" name="title" placeholder="Organize books at the library." />
           </div>
-          <button onClick={handleSubmit} type="submit" class="btn btn-primary d-block w-100">Submit</button>
+          <button type="submit" className="btn btn-primary d-block w-100">Submit</button>
         </form>
       </div>
     </div>
